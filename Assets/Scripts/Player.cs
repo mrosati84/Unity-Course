@@ -1,10 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private Vector3 direction = Vector3.right;
     [SerializeField]
     private float speed = 10.0f;
 
@@ -35,6 +33,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool shieldActive = false;
 
+    [SerializeField]
+    private GameObject UIManager;
+
+    [SerializeField]
+    private int score = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +56,7 @@ public class Player : MonoBehaviour
             if (Time.time > this.nextFire)
             {
                 this.Fire();
+                // set cooldown
                 this.nextFire = Time.time + this.fireRate;
             }
         }
@@ -60,6 +65,9 @@ public class Player : MonoBehaviour
     public void Damage()
     {
         this.lives--;
+
+        // set lives in the UI
+        this.UIManager.GetComponent<UIManager>().setLives(this.lives);
 
         if (this.lives == 0)
         {
@@ -87,6 +95,19 @@ public class Player : MonoBehaviour
         
     }
 
+    public void setScore(int amount)
+    {
+        this.score += amount;
+
+        // update the score UI
+        this.UIManager.GetComponent<UIManager>().setScoreText(this.score);
+    }
+
+    public void setShield(bool value)
+    {
+        this.shieldActive = value;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // collect powerups
@@ -103,6 +124,8 @@ public class Player : MonoBehaviour
             // Instantiate the shield
             ShieldPowerup shieldPowerupScript = collision.GetComponent<ShieldPowerup>();
             GameObject shieldPrefab = shieldPowerupScript.getShield();
+
+            this.setShield(true);
 
             // instantiate the shield
             Instantiate(shieldPrefab, transform.position, Quaternion.identity);
@@ -121,6 +144,7 @@ public class Player : MonoBehaviour
         this.horizontalInput = Input.GetAxis("Horizontal");
         this.verticalInput = Input.GetAxis("Vertical");
 
+        // prevent moving off screen limits
         if (transform.position.y >= this.upLimit)
         {
             transform.position = new Vector3(transform.position.x, this.upLimit);

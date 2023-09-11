@@ -1,15 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
+    private Player playerScript;
+    
     // Start is called before the first frame update
     void Start()
     {
         // set the shield as player's child
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         transform.parent = player.transform;
+
+        // get the player script
+        this.playerScript = player.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -28,6 +31,9 @@ public class Shield : MonoBehaviour
 
             // destroy the shield
             Destroy(this.gameObject);
+
+            // unset the shield on the player
+            this.playerScript.setShield(false);
         }
     }
 }

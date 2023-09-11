@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShieldPowerup : MonoBehaviour
 {
@@ -20,6 +18,7 @@ public class ShieldPowerup : MonoBehaviour
     {
         transform.Translate(Vector2.down * this.speed * Time.deltaTime);
 
+        // destroy powerup when off-screen
         if (transform.position.y < -6f)
         {
             Destroy(this.gameObject);

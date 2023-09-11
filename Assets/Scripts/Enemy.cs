@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -24,6 +22,9 @@ public class Enemy : MonoBehaviour
         {
             // destroy the laser
             Destroy(collision.gameObject);
+
+            // add score
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().setScore(10);
 
             // destroy the enemy
             Destroy(this.gameObject);
