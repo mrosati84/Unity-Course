@@ -26,8 +26,14 @@ public class Shield : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
+            // trigger enemy explosion animation
+            collision.GetComponent<Animator>().SetTrigger("OnEnemyDestroy");
+
+            // disable the enemy box collider
+            collision.GetComponent<BoxCollider2D>().enabled = false;
+
             // destroy the enemy
-            Destroy(collision.gameObject);
+            Destroy(collision.gameObject, 2.8f);
 
             // destroy the shield
             Destroy(this.gameObject);

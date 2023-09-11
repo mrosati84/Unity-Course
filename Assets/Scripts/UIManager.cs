@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Sprite[] livesSprites = new Sprite[4];
 
+    private bool isGameOver = false;
+
     public void SetScoreText(int value)
     {
         this.scoreText.text = "Score: " + value.ToString();
@@ -28,5 +31,25 @@ public class UIManager : MonoBehaviour
     public void GameOver()
     {
         this.gameOverText.gameObject.SetActive(true);
+        this.isGameOver = true;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && this.isGameOver)
+        {
+            this.isGameOver = false;
+            SceneManager.LoadScene("Game");
+        }
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

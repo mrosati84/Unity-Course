@@ -9,6 +9,7 @@ TagManager:
   - TripleShot
   - Shield
   - ShieldPowerup
+  - Asteroid
   layers:
   - Default
   - TransparentFX

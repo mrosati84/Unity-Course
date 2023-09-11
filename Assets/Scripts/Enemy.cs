@@ -26,9 +26,16 @@ public class Enemy : MonoBehaviour
             // add score
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().SetScore(10);
 
+            // trigger explosion animation
+            GetComponent<Animator>().SetTrigger("OnEnemyDestroy");
+
+            // disable the box collider
+            GetComponent<BoxCollider2D>().enabled = false;
+
             // destroy the enemy
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 2.8f);
         }
+        
         else if (collision.tag == "Player")
         {
             // get the player script
@@ -37,10 +44,16 @@ public class Enemy : MonoBehaviour
             if (player != null)
             {
                 player.Damage();
-            }
 
-            // destroy the enemy
-            Destroy(this.gameObject);
+                // trigger explosion animation
+                GetComponent<Animator>().SetTrigger("OnEnemyDestroy");
+
+                // disable the box collider
+                GetComponent<BoxCollider2D>().enabled = false;
+
+                // destroy the enemy
+                Destroy(this.gameObject, 2.8f);
+            }
         }
     }
 }
