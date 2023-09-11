@@ -246,6 +246,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4891022165467497636, guid: fb3afc568f0c4604f8eb114cf6760961, type: 3}
+  powerUps:
+  - {fileID: 2203045374001933280, guid: 3da93180402a848458b75ceda02a0d2c, type: 3}
 --- !u!1 &1107256652
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +374,9 @@ MonoBehaviour:
   speed: 10
   lives: 3
   laser: {fileID: 1538372208148105048, guid: 313f8073fec93f24880b4da097ef2d5f, type: 3}
+  tripleLaser: {fileID: 2612781041318236910, guid: a367e065a0bab2641b926d564e7275b6,
+    type: 3}
+  tripleShotActive: 1
 --- !u!212 &1589214812
 SpriteRenderer:
   m_ObjectHideFlags: 0

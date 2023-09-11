@@ -25,6 +25,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject laser;
 
+    [SerializeField]
+    private GameObject tripleLaser;
+
+    [SerializeField]
+    private bool tripleShotActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,8 +70,36 @@ public class Player : MonoBehaviour
 
     private void Fire()
     {
-        Vector3 firePosition = new Vector3(transform.position.x, transform.position.y + .8f);
-        Instantiate(this.laser, firePosition, Quaternion.identity);
+        Vector3 firePosition = new Vector3(transform.position.x, transform.position.y + 1.05f);
+
+        if (this.tripleShotActive)
+        {
+            Instantiate(this.tripleLaser, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(this.laser, firePosition, Quaternion.identity);
+        }
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // collect powerups
+        if (collision.tag == "TripleShot" && !this.tripleShotActive)
+        {
+            Destroy(collision.gameObject);
+            this.tripleShotActive = true;
+
+            // disable triple shot after X seconds
+            StartCoroutine(DisableTripleLaser());
+        }
+    }
+
+    IEnumerator DisableTripleLaser()
+    {
+        yield return new WaitForSeconds(5);
+        this.tripleShotActive = false;
     }
 
     private void Move()
