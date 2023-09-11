@@ -16,7 +16,8 @@ public class Player : MonoBehaviour
     private float leftLimit = -9.0f;
     private float rightLimit = 9.0f;
 
-    private float fireRate = 0.5f;
+    [SerializeField]
+    private float fireRate = 0.2f;
     private float nextFire = 0.0f;
 
     [SerializeField]
