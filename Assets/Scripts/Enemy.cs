@@ -27,20 +27,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.tag == "Laser")
+        if (collision.gameObject.tag == "Laser")
         {
             // destroy the laser
-            Destroy(other.gameObject);
+            Destroy(collision.gameObject);
 
             // destroy the enemy
             Destroy(this.gameObject);
         }
-        else if (other.tag == "Player")
+        else if (collision.tag == "Player")
         {
             // get the player script
-            Player player = other.gameObject.GetComponent<Player>();
+            Player player = collision.gameObject.GetComponent<Player>();
             
             if (player != null)
             {
