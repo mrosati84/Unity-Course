@@ -37,6 +37,9 @@ public class Player : MonoBehaviour
     private GameObject UIManager;
 
     [SerializeField]
+    private GameObject[] damage;
+
+    [SerializeField]
     private int score = 0;
 
     // Start is called before the first frame update
@@ -65,6 +68,12 @@ public class Player : MonoBehaviour
     public void Damage()
     {
         this.lives--;
+
+        if (this.lives > 0)
+        {
+            // visualize the damage in the wings
+            this.damage[this.lives - 1].gameObject.SetActive(true);
+        }
 
         // set lives in the UI
         this.UIManager.GetComponent<UIManager>().SetLives(this.lives);
