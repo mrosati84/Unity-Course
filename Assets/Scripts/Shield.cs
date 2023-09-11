@@ -33,7 +33,7 @@ public class Shield : MonoBehaviour
             Destroy(this.gameObject);
 
             // unset the shield on the player
-            this.playerScript.setShield(false);
+            this.playerScript.SetShield(false);
         }
     }
 }

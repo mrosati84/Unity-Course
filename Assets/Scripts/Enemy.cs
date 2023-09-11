@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
             Destroy(collision.gameObject);
 
             // add score
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().setScore(10);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().SetScore(10);
 
             // destroy the enemy
             Destroy(this.gameObject);

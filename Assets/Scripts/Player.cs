@@ -67,15 +67,18 @@ public class Player : MonoBehaviour
         this.lives--;
 
         // set lives in the UI
-        this.UIManager.GetComponent<UIManager>().setLives(this.lives);
+        this.UIManager.GetComponent<UIManager>().SetLives(this.lives);
 
         if (this.lives == 0)
         {
             Destroy(this.gameObject);
+
+            // show game over
+            this.UIManager.GetComponent<UIManager>().GameOver();
         }
     }
 
-    public bool isAlive()
+    public bool IsAlive()
     {
         return this.lives > 0;
     }
@@ -95,15 +98,15 @@ public class Player : MonoBehaviour
         
     }
 
-    public void setScore(int amount)
+    public void SetScore(int amount)
     {
         this.score += amount;
 
         // update the score UI
-        this.UIManager.GetComponent<UIManager>().setScoreText(this.score);
+        this.UIManager.GetComponent<UIManager>().SetScoreText(this.score);
     }
 
-    public void setShield(bool value)
+    public void SetShield(bool value)
     {
         this.shieldActive = value;
     }
@@ -125,7 +128,7 @@ public class Player : MonoBehaviour
             ShieldPowerup shieldPowerupScript = collision.GetComponent<ShieldPowerup>();
             GameObject shieldPrefab = shieldPowerupScript.getShield();
 
-            this.setShield(true);
+            this.SetShield(true);
 
             // instantiate the shield
             Instantiate(shieldPrefab, transform.position, Quaternion.identity);

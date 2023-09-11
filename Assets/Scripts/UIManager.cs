@@ -10,15 +10,23 @@ public class UIManager : MonoBehaviour
     private Image livesSprite;
 
     [SerializeField]
+    private Text gameOverText;
+
+    [SerializeField]
     private Sprite[] livesSprites = new Sprite[4];
 
-    public void setScoreText(int value)
+    public void SetScoreText(int value)
     {
         this.scoreText.text = "Score: " + value.ToString();
     }
 
-    public void setLives(int lives)
+    public void SetLives(int lives)
     {
         this.livesSprite.sprite = this.livesSprites[lives];
+    }
+
+    public void GameOver()
+    {
+        this.gameOverText.gameObject.SetActive(true);
     }
 }

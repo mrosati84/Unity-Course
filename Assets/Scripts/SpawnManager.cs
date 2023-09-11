@@ -55,7 +55,7 @@ public class SpawnManager : MonoBehaviour
         {
             Player playerScript = player.GetComponent<Player>();
 
-            return playerScript.isAlive();
+            return playerScript.IsAlive();
         }
 
         return false;
