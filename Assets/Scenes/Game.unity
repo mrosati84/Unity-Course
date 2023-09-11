@@ -248,6 +248,9 @@ MonoBehaviour:
   enemy: {fileID: 4891022165467497636, guid: fb3afc568f0c4604f8eb114cf6760961, type: 3}
   powerUps:
   - {fileID: 2203045374001933280, guid: 3da93180402a848458b75ceda02a0d2c, type: 3}
+  - {fileID: 2558523143504667448, guid: eb3d1e1bb71b15249b8a476e36221de7, type: 3}
+  spawnEnemies: 1
+  spawnPowerups: 1
 --- !u!1 &1107256652
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +355,7 @@ GameObject:
   - component: {fileID: 1589214812}
   - component: {fileID: 1589214811}
   - component: {fileID: 1589214814}
+  - component: {fileID: 1589214815}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -378,6 +382,7 @@ MonoBehaviour:
   tripleLaser: {fileID: 2612781041318236910, guid: a367e065a0bab2641b926d564e7275b6,
     type: 3}
   tripleShotActive: 0
+  shieldActive: 0
 --- !u!212 &1589214812
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -468,6 +473,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.247476, y: 4.1837378}
   m_EdgeRadius: 0
+--- !u!50 &1589214815
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589214810}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1790655099
 GameObject:
   m_ObjectHideFlags: 0

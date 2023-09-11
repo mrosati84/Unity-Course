@@ -9,6 +9,12 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField]
     private GameObject[] powerUps = new GameObject[10];
+
+    [SerializeField]
+    private bool spawnEnemies = true;
+
+    [SerializeField]
+    private bool spawnPowerups = true;
     
     void Start()
     {
@@ -18,7 +24,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnPowerUp()
     {
-        if (this.isPlayerAlive())
+        if (this.isPlayerAlive() && this.spawnPowerups)
         {
             // pick a random powerup
             int randomIndex = Random.Range(0, this.powerUps.Length);
@@ -34,7 +40,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        if (this.isPlayerAlive())
+        if (this.isPlayerAlive() && this.spawnEnemies)
         {
             float randomX = transform.position.x + Random.Range(-5.0f, 5.0f);
             Vector3 position = new Vector3(randomX, transform.position.y, 0);

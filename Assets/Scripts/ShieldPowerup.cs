@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TripleShotPowerup : MonoBehaviour
+public class ShieldPowerup : MonoBehaviour
 {
     [SerializeField]
     private float speed = 5.0f;
+
+    [SerializeField]
+    private GameObject shieldPrefab;
+
+    public GameObject getShield()
+    {
+        return this.shieldPrefab;
+    }
 
     // Update is called once per frame
     void Update()
@@ -16,10 +24,5 @@ public class TripleShotPowerup : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
     }
 }

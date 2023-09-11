@@ -32,6 +32,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool tripleShotActive = false;
 
+    [SerializeField]
+    private bool shieldActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -94,6 +97,16 @@ public class Player : MonoBehaviour
 
             // disable triple shot after X seconds
             StartCoroutine(DisableTripleLaser());
+        }
+        if (collision.tag == "ShieldPowerup" && !this.shieldActive)
+        {
+            // Instantiate the shield
+            ShieldPowerup shieldPowerupScript = collision.GetComponent<ShieldPowerup>();
+            GameObject shieldPrefab = shieldPowerupScript.getShield();
+
+            // instantiate the shield
+            Instantiate(shieldPrefab, transform.position, Quaternion.identity);
+            Destroy(collision.gameObject);
         }
     }
 
