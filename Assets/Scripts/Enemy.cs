@@ -38,6 +38,9 @@ public class Enemy : MonoBehaviour
             // disable the box collider
             GetComponent<BoxCollider2D>().enabled = false;
 
+            // play the explosion sound
+            GameObject.FindGameObjectWithTag("Audio_Explosion").GetComponent<AudioSource>().Play();
+
             // destroy the enemy
             Destroy(this.gameObject, 2.8f);
         }
@@ -56,6 +59,9 @@ public class Enemy : MonoBehaviour
 
                 // disable the box collider
                 GetComponent<BoxCollider2D>().enabled = false;
+
+                // play the explosion sound
+                GameObject.FindGameObjectWithTag("Audio_Explosion").GetComponent<AudioSource>().Play();
 
                 // destroy the enemy
                 Destroy(this.gameObject, 2.8f);

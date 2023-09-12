@@ -41,6 +41,12 @@ public class UIManager : MonoBehaviour
             this.isGameOver = false;
             SceneManager.LoadScene("Game");
         }
+
+        // handle ESC to open menu
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "Game")
+        {
+            SceneManager.LoadScene("Main_Menu");
+        }
     }
 
     public void StartGame()

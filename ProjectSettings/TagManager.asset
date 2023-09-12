@@ -11,6 +11,8 @@ TagManager:
   - ShieldPowerup
   - Asteroid
   - Damage
+  - Audio_Explosion
+  - Audio_Powerup
   layers:
   - Default
   - TransparentFX

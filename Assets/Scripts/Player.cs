@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int score = 0;
 
+    [SerializeField]
+    private GameObject laserSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,6 +107,9 @@ public class Player : MonoBehaviour
         {
             Instantiate(this.laser, firePosition, Quaternion.identity);
         }
+
+        // play the laser sound
+        laserSound.GetComponent<AudioSource>().Play();
         
     }
 
@@ -130,6 +136,9 @@ public class Player : MonoBehaviour
 
             // disable triple shot after X seconds
             StartCoroutine(DisableTripleLaser());
+
+            // play the powerup sound
+            GameObject.FindGameObjectWithTag("Audio_Powerup").GetComponent<AudioSource>().Play();
         }
         if (collision.tag == "ShieldPowerup" && !this.shieldActive)
         {
@@ -142,6 +151,9 @@ public class Player : MonoBehaviour
             // instantiate the shield
             Instantiate(shieldPrefab, transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
+
+            // play the powerup sound
+            GameObject.FindGameObjectWithTag("Audio_Powerup").GetComponent<AudioSource>().Play();
         }
     }
 

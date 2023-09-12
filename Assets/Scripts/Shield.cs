@@ -32,6 +32,9 @@ public class Shield : MonoBehaviour
             // disable the enemy box collider
             collision.GetComponent<BoxCollider2D>().enabled = false;
 
+            // play the powerup sound
+            GameObject.FindGameObjectWithTag("Audio_Explosion").GetComponent<AudioSource>().Play();
+
             // destroy the enemy
             Destroy(collision.gameObject, 2.8f);
 
